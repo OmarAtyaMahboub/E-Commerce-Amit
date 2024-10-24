@@ -1,0 +1,13 @@
+.text-white {
+    text-decoration: none;
+}
+
+
+.text-white:hover {
+    color: gray !important;
+    
+ }
+
+h5 {
+      color: white;
+}
