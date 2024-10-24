@@ -53,6 +53,17 @@ function removeChildFromDiv(elementID) {
     }
 }
 
+function search() {
+    const searchInput = document.querySelector("#searchInput");
+    searchInput.addEventListener('input', (x) => {
+        const value = x.target.value;
+        if (value) {
+            fetchingData(`https://dummyjson.com/products/search?q=${value}`)
+        } else {
+            fetchingData();
+        }
+    });
+}
 
 const categoryButtons = document.querySelectorAll('#categoryButtons button');
 categoryButtons.forEach(button => {
@@ -69,4 +80,7 @@ categoryButtons.forEach(button => {
 });
 
 
+
+
+search()
 fetchingData()

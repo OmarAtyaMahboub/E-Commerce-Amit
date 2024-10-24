@@ -153,3 +153,9 @@ body {
 .line {
     width: 180px;
 }
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+
+}
