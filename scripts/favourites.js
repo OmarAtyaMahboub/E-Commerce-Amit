@@ -97,7 +97,7 @@ function showFavNoItems()
             <h1>it Seems you haven't favored anything</h1>
             <div class = "d-flex justify-content-evenly">
             <span>wanna favor something?</span>
-            <span>check out our <a href="#">shop</a></span>
+            <span>check out our <a href="products.html">shop</a></span>
         </div>
         </div>`;
 

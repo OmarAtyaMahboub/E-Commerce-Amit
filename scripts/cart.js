@@ -127,7 +127,7 @@ function showCartNoItems()
             <h1>it Seems you haven't ordered anything</h1>
             <div class = "d-flex justify-content-evenly">
             <span>wanna buy something?</span>
-            <span>check out our <a href="#">shop</a></span>
+            <span>check out our <a href="products.html">shop</a></span>
         </div>
         </div>`;
 
