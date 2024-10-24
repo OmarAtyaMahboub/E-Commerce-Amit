@@ -1,0 +1,34 @@
+body {
+    color: white;
+}
+
+.icon {
+    color: gray;
+    font-size: xx-large;
+    padding-left: 90px;
+}
+
+.red-text {
+    color: red;
+    /* Red color for the asterisks */
+}
+
+.container1 {
+    text-align: center;
+}
+
+.container {
+    padding-top: 100px;
+}
+
+.box3 {
+    width: calc(200% - 40px);
+    /* Set width to double and account for margins */
+    max-width: 800px;
+    /* Optional: limit maximum width */
+}
+
+.box {
+    width: 100%;
+    /* Ensure the box has a width of 100% */
+}
