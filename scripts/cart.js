@@ -1,17 +1,5 @@
 
-import {updateStorage, deleteStorage, getItemIndex} from "./methods.js";
-
-
-//TODO: get logged-in user session data
-//fetching user dummy data
-fetch("https://jsonplaceholder.typicode.com/users").then(function (response)
-{
-    return response.json();
-}).then(function (response)
-{
-    sessionStorage.setItem("id", response[0].id);
-    main();
-});
+import {updateStorage, deleteStorage, getItemIndex, sessionCheck} from "./methods.js";
 
 function main()
 {
@@ -324,4 +312,9 @@ function showCartNoItems()
     </div>
   </footer>`;
 
+}
+
+if(sessionCheck())
+{
+    main();
 }

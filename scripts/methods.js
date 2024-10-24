@@ -1,16 +1,15 @@
-export function sessionInit()
+export function sessionCheck()
 {
-    if(!sessionStorage.getItem("id"))
+    if(!sessionInit())
     {
-        fetch("https://jsonplaceholder.typicode.com/users").then(function (response)
-        {
-            return response.json();
-        }).then(function (response)
-        {
-            //dummy user if no accounts are there
-            sessionStorage.setItem("id", response[0].id);
-        });
+        window.location.assign("../html/login.html");
     }
+    return true;
+}
+
+function sessionInit()
+{
+    return (sessionStorage.getItem("id"));
 }
 
 export function getItemById(id, source)

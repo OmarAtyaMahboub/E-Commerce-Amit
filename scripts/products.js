@@ -1,4 +1,4 @@
-import {updateStorage, appendToStorage, getItemIndex, sessionInit} from "./methods.js";
+import {updateStorage, appendToStorage, getItemIndex, sessionCheck} from "./methods.js";
 
 'use strict';
 
@@ -122,12 +122,16 @@ function readButtons(products, favs)
     for(let i = 0; i < btns.length; i++)
     {
         let product = btns[i].closest('[id]');
+
         //add to cart
         if(btns[i].classList.contains("buttonCart"))
         {
             btns[i].addEventListener("click", function ()
             {
-                appendToStorage(products[getItemIndex(Number(product.id), products)], 'cart');
+                if(sessionCheck())
+                {
+                    appendToStorage(products[getItemIndex(Number(product.id), products)], 'cart');
+                }
             });
         }
         //unfavor & favor
@@ -135,17 +139,20 @@ function readButtons(products, favs)
         {
             btns[i].addEventListener("click", function ()
             {
-                if(product.classList.contains("favored"))
+                if(sessionCheck())
                 {
-                    product.classList.remove("favored");
-                    favs.splice(getItemIndex(Number(product.id), favs), 1);
-                    updateStorage(favs, "fav");
-                }
-                else
-                {
-                    product.classList.add("favored");
-                    appendToStorage(products[getItemIndex(Number(product.id), products)], 'fav');
-                    favs = JSON.parse(localStorage.getItem(`${sessionStorage.getItem("id")}fav`)) || [];
+                    if(product.classList.contains("favored"))
+                    {
+                        product.classList.remove("favored");
+                        favs.splice(getItemIndex(Number(product.id), favs), 1);
+                        updateStorage(favs, "fav");
+                    }
+                    else
+                    {
+                        product.classList.add("favored");
+                        appendToStorage(products[getItemIndex(Number(product.id), products)], 'fav');
+                        favs = JSON.parse(localStorage.getItem(`${sessionStorage.getItem("id")}fav`)) || [];
+                    }
                 }
             });
         }
@@ -156,5 +163,5 @@ function readButtons(products, favs)
     }
 }
 
-search();
 fetchingData();
+search();
