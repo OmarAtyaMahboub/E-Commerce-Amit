@@ -1,4 +1,4 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900");
 /* start navbar */
 
 
@@ -94,7 +94,7 @@ a {
 .content{
 display: flex;
 align-items: center;
-background-image: url("pro.jpg.jpg");
+background-image: url("../imgs/pro.jpg.jpg");
 background-size: cover ;
 justify-content: center;
 width: 100%;
@@ -202,12 +202,17 @@ height: 730px;
 section {
     display: flex;
     align-items: center;
-   background-image: url("cader_-W7aQ_MxOUJQ-unsplash.jpg");
+    background-image: url("../imgs/cader_-W7aQ_MxOUJQ-unsplash.jpg");
+    justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: 50px;
   }
 
+  .photo-section{
+    height: 100vh;
+    margin: 0;
+  }
   section .container {
     margin: 60px auto !important;
   }
