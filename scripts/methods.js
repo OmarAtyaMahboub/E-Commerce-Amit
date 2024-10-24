@@ -1,3 +1,18 @@
+export function sessionInit()
+{
+    if(!sessionStorage.getItem("id"))
+    {
+        fetch("https://jsonplaceholder.typicode.com/users").then(function (response)
+        {
+            return response.json();
+        }).then(function (response)
+        {
+            //dummy user if no accounts are there
+            sessionStorage.setItem("id", response[0].id);
+        });
+    }
+}
+
 export function getItemById(id, source)
 {
     for(let i = 0; i < source.length; i++)
