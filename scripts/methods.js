@@ -2,6 +2,7 @@ export function sessionCheck()
 {
     if(!sessionInit())
     {
+        alert("you should be logged in!\nredirecting to login page");
         window.location.assign("../html/login.html");
     }
     return true;
@@ -9,7 +10,7 @@ export function sessionCheck()
 
 function sessionInit()
 {
-    return (sessionStorage.getItem("id"));
+    return sessionStorage.getItem("id");
 }
 
 export function getItemById(id, source)
@@ -28,13 +29,10 @@ export function getItemIndex(id, source)
     {
         if(source[i].id === id)
         {
-            console.log(`found element `);
             return i;
-
         }
 
     }
-    console.log(`found nothing`);
 }
 
 export function appendToStorage(source, destinationName)
