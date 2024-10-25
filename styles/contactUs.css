@@ -32,3 +32,15 @@ body {
     width: 100%;
     /* Ensure the box has a width of 100% */
 }
+
+
+.logo {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.logo:hover {
+    scale: 105%;
+}

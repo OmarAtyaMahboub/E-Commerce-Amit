@@ -5,9 +5,21 @@
 
 .text-white:hover {
     color: gray !important;
-    
- }
+
+}
 
 h5 {
-      color: white;
+    color: white;
+}
+
+
+.logo {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.logo:hover {
+    scale: 105%;
 }

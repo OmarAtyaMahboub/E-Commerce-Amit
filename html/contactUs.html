@@ -24,7 +24,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a href="index.html"><img src="../imgs/Screenshot_2024-10-23_155910-removebg-preview.png" alt=""></a>
+            <a href="./index.html" class="logo">Shopicart.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="products.html">special offers</a>
+                        <a class="nav-link active" href="products.html">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="contactUs.html">Contact Us</a>
@@ -195,8 +195,7 @@
         </div>
     </footer>
     <script>
-        function validateForm()
-        {
+        function validateForm() {
             const firstName = document.getElementById("firstName");
             const lastName = document.getElementById("lastName");
             const email = document.getElementById("email");
@@ -210,36 +209,31 @@
             let valid = true;
 
             // Check if fields are empty
-            if(!firstName.value || !lastName.value || !email.value || !message.value)
-            {
+            if (!firstName.value || !lastName.value || !email.value || !message.value) {
                 alert("All fields must be filled out.");
                 valid = false;
             }
 
             // Check if first name and last name contain only letters
             const namePattern = /^[A-Za-z]+$/;
-            if(!namePattern.test(firstName.value))
-            {
+            if (!namePattern.test(firstName.value)) {
                 firstName.classList.add("error");
                 valid = false;
             }
-            if(!namePattern.test(lastName.value))
-            {
+            if (!namePattern.test(lastName.value)) {
                 lastName.classList.add("error");
                 valid = false;
             }
 
             // Check email format
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(!emailPattern.test(email.value))
-            {
+            if (!emailPattern.test(email.value)) {
                 email.classList.add("error");
                 valid = false;
             }
 
             // If all checks are passed
-            if(valid)
-            {
+            if (valid) {
                 alert("Message sent successfully!");
                 // Optionally, reset the form
                 firstName.value = '';

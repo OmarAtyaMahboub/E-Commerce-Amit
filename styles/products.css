@@ -1,5 +1,5 @@
 * {
-    font-family: cambria;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body {
@@ -34,14 +34,14 @@ body {
 
 #cardContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
 }
 
 .productCard {
     width: 100%;
-    max-width: 205px;
+    /* max-width: 205px; */
     height: auto;
     align-items: center;
     justify-content: space-between;
@@ -107,19 +107,20 @@ body {
     font-size: 9px;
     font-weight: bold;
     color: wheat;
-    background-color: black;
-    border: 2px solid black;
+    background-color: rgb(4, 94, 94);
+    border: 2px solid rgb(4, 94, 94);
 }
 
 .buttonFavor:hover,
 .buttonCart:hover {
     scale: 105%;
-    background-color: black;
+    background-color: rgb(4, 94, 94);
     cursor: pointer;
 }
 
 #categoryButtons {
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: center;
     gap: 50px;
@@ -128,16 +129,16 @@ body {
 }
 
 #categoryButtons * {
-    color: wheat;
+    color: rgb(255, 255, 255);
     border-radius: 5px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 7px;
     padding-bottom: 7px;
-    font-size: 9px;
+    font-size: 15px;
     font-weight: bold;
-    background-color: black;
-    border: 2px solid black;
+    background-color: rgb(4, 94, 94);
+    border: 2px solid rgb(4, 94, 94);
     cursor: pointer;
 }
 
@@ -147,7 +148,7 @@ body {
 .buttonFurniture:hover,
 .buttonGroceries:hover {
     scale: 105%;
-    color: rgb(170, 3, 170);
+    color: rgb(4, 94, 94);
 }
 
 .line {
@@ -158,4 +159,16 @@ body {
     display: flex;
     justify-content: center;
 
+}
+
+
+.logo {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.logo:hover {
+    scale: 105%;
 }

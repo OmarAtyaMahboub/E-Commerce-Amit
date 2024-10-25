@@ -197,3 +197,15 @@ h3 {
     border-bottom: 5px solid rgb(5, 76, 76);
     margin: 10px 0;
 }
+
+
+.logo {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.logo:hover {
+    scale: 105%;
+}

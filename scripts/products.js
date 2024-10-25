@@ -1,21 +1,16 @@
-import {updateStorage, appendToStorage, getItemIndex, sessionCheck} from "./methods.js";
+import { updateStorage, appendToStorage, getItemIndex, sessionCheck } from "./methods.js";
 
 'use strict';
 
-function fetchingData(url = "https://dummyjson.com/products")
-{
-    fetch(url).then((response) =>
-    {
-        if(!response.ok)
-        {
+function fetchingData(url = "https://dummyjson.com/products") {
+    fetch(url).then((response) => {
+        if (!response.ok) {
             throw new Error("Unable to fetch data 404!");
         }
         return response.json();
     })
 
-        .then((data) =>
-        {
-            sessionInit();
+        .then((data) => {
             let products = data.products;
             let productDiv = document.getElementById("cardContainer");
             removeChildFromDiv("cardContainer");
@@ -23,17 +18,14 @@ function fetchingData(url = "https://dummyjson.com/products")
         })
 
         .catch(
-            (error) =>
-            {
+            (error) => {
                 console.log(error.message);
             });
 }
 
-function addProducts(products, parentDiv)
-{
+function addProducts(products, parentDiv) {
     let favs = JSON.parse(localStorage.getItem(`${sessionStorage.getItem("id")}fav`)) || [];
-    for(let i = 0; i < products.length; i++)
-    {
+    for (let i = 0; i < products.length; i++) {
 
         let innerProductDiv = document.createElement("div");
         innerProductDiv.className = "productCard";
@@ -56,10 +48,8 @@ function addProducts(products, parentDiv)
         </div>`;
         parentDiv.appendChild(innerProductDiv);
 
-        for(let j = 0; j < favs.length; j++)
-        {
-            if(favs[j].id === products[i].id)
-            {
+        for (let j = 0; j < favs.length; j++) {
+            if (favs[j].id === products[i].id) {
                 document.querySelectorAll(".productCard")[i].classList.add("favored");
             }
         }
@@ -67,88 +57,67 @@ function addProducts(products, parentDiv)
     readButtons(products, favs);
 }
 
-function removeChildFromDiv(elementID)
-{
+function removeChildFromDiv(elementID) {
     let parentDiv = document.getElementById(elementID);
-    while(parentDiv.firstChild)
-    {
+    while (parentDiv.firstChild) {
         parentDiv.removeChild(parentDiv.firstChild);
     }
 }
 
-function search()
-{
+function search() {
     const searchInput = document.querySelector("#searchInput");
-    searchInput.addEventListener('keydown', (e) =>
-    {
-        if(e.key === "Enter")
-        {
-            const value = searchInput.value;
-            if(value)
-            {
-                fetchingData(`https://dummyjson.com/products/search?q=${value}`);
-            } else
-            {
-                fetchingData();
-            }
+    searchInput.addEventListener('keydown', (e) => {
+        // if (e.key === "enter") {
+        const value = searchInput.value;
+        if (value) {
+            fetchingData(`https://dummyjson.com/products/search?q=${value}`);
+        } else {
+            fetchingData();
         }
+        // }
     });
 }
 
 
 
 const categoryButtons = document.querySelectorAll('#categoryButtons button');
-categoryButtons.forEach(button =>
-{
-    button.addEventListener('click', (event) =>
-    {
+categoryButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
         const selectedCategory = event.target.getAttribute("data-category");
         const categories = ["beauty", "fragrances", "furniture", "groceries"];
-        if(categories.includes(selectedCategory))
-        {
+        if (categories.includes(selectedCategory)) {
             fetchingData(`https://dummyjson.com/products/category/${selectedCategory}`);
         }
-        else
-        {
+        else {
             fetchingData();
         }
     });
 });
 
 
-function readButtons(products, favs)
-{
+function readButtons(products, favs) {
     let btns = document.querySelectorAll(".buttons button");
-    for(let i = 0; i < btns.length; i++)
-    {
+    for (let i = 0; i < btns.length; i++) {
         let product = btns[i].closest('[id]');
 
         //add to cart
-        if(btns[i].classList.contains("buttonCart"))
-        {
-            btns[i].addEventListener("click", function ()
-            {
-                if(sessionCheck())
-                {
+        if (btns[i].classList.contains("buttonCart")) {
+            btns[i].addEventListener("click", function () {
+                if (sessionCheck()) {
                     appendToStorage(products[getItemIndex(Number(product.id), products)], 'cart');
                 }
             });
         }
         //unfavor & favor
-        else if(btns[i].classList.contains("buttonFavor"))
-        {
-            btns[i].addEventListener("click", function ()
-            {
-                if(sessionCheck())
-                {
-                    if(product.classList.contains("favored"))
-                    {
+        else if (btns[i].classList.contains("buttonFavor")) {
+            btns[i].addEventListener("click", function () {
+                if (sessionCheck()) {
+                    if (product.classList.contains("favored")) {
                         product.classList.remove("favored");
                         favs.splice(getItemIndex(Number(product.id), favs), 1);
                         updateStorage(favs, "fav");
                     }
-                    else
-                    {
+                    else {
                         product.classList.add("favored");
                         appendToStorage(products[getItemIndex(Number(product.id), products)], 'fav');
                         favs = JSON.parse(localStorage.getItem(`${sessionStorage.getItem("id")}fav`)) || [];
@@ -156,12 +125,10 @@ function readButtons(products, favs)
                 }
             });
         }
-        else
-        {
+        else {
             console.log("error");
         }
     }
 }
-
-fetchingData();
 search();
+fetchingData();
